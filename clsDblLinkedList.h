@@ -4,7 +4,10 @@ using namespace std;
 
 template <class T>
 class clsDblLinkedList
-{
+{private:
+
+	int _size = 0;
+
 public:
 	class Node
 	{
@@ -29,7 +32,21 @@ public:
 			current = current->next;
 		}
 
-		cout << "NULL";
+	}
+
+	Node* Find(T Value)
+	{
+		Node* current = _head;
+
+		while (current != NULL)
+		{
+			if (current->value == Value)
+				return current;
+
+			current = current->next;
+		}
+
+		return NULL;
 	}
 
 	void InsertAtBeginning(T Value)
@@ -43,21 +60,7 @@ public:
 			_head->prev = newNode;
 
 		_head = newNode;
-	}
-
-	Node* Find(T Value)
-	{
-		Node* current = _head;
-		
-		while (current != NULL)
-		{
-			if (current->value == Value)
-				return current;
-
-			current = current->next;
-		}
-
-		return NULL;
+		_size++;
 	}
 
 	void InsertAfter(Node* current,T Value )
@@ -75,7 +78,7 @@ public:
 		}
 
 		current->next = N1;
-	
+		_size++;
 	}
 	
 	void InsertAtEnd(T Value)
@@ -103,9 +106,10 @@ public:
 			current->next = N1;
 			N1->prev = current;
 		}
+		_size++;
 	}
 
-	void DeleteNode(Node* NodeToDelete)
+	void DeleteNode(Node* &NodeToDelete)
 	{
 		if (NodeToDelete == NULL || _head == NULL)
 			return;
@@ -126,7 +130,7 @@ public:
 		}
 
 		delete NodeToDelete;
-
+		_size--;
 	}
 
 	void DeleteFirstNode()
@@ -144,6 +148,7 @@ public:
 		}
 
 		delete temp;
+		_size--;
 	}
 
 	void DeleteLastNode()
@@ -172,6 +177,13 @@ public:
 
 		delete NodeToDelete;
 
+		_size--;
 	}
+
+	int Size()
+	{
+		return _size;
+	}
+
 };
 
