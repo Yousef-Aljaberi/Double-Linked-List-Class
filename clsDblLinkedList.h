@@ -4,7 +4,8 @@ using namespace std;
 
 template <class T>
 class clsDblLinkedList
-{private:
+{
+protected:
 
 	int _size = 0;
 
@@ -183,6 +184,19 @@ public:
 	int Size()
 	{
 		return _size;
+	}
+
+	bool IsEmpty()
+	{
+		return (_size == 0 ? true : false);
+	}
+
+	void Clear()
+	{
+		while (_size > 0)
+		{
+			DeleteFirstNode();
+		}
 	}
 
 };

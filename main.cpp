@@ -18,4 +18,16 @@ int main()
 
 	cout << "\nNumber of items in the linked list = " << MyDbblLinkedList.Size();
 
+	if (MyDbblLinkedList.IsEmpty())
+	{
+		cout << "\n it is empty.\n";
+	}
+	else
+	{
+		cout << "\n It is not empty.\n";
+	}
+
+	cout << "\nafter clear: \n";
+	MyDbblLinkedList.Clear();
+	cout<< MyDbblLinkedList.Size();
 }
