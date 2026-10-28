@@ -199,5 +199,29 @@ public:
 		}
 	}
 
+	void Revers()
+	{
+		if(_size==0)
+		{
+			return;
+		}
+		Node* current = _head;
+
+		Node* temp = nullptr;
+		while ( current != NULL)
+		{
+			temp= current->prev;
+			current->prev = current->next;
+			current->next = temp;
+			current = current->prev;
+
+		}
+
+		if (temp != nullptr)
+		{
+			_head = temp->prev;
+		}
+	}
+
 };
 

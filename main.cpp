@@ -16,18 +16,9 @@ int main()
 	cout << "\nLinked List Content: \n";
 	MyDbblLinkedList.PrintList();
 
-	cout << "\nNumber of items in the linked list = " << MyDbblLinkedList.Size();
+	MyDbblLinkedList.Revers();
 
-	if (MyDbblLinkedList.IsEmpty())
-	{
-		cout << "\n it is empty.\n";
-	}
-	else
-	{
-		cout << "\n It is not empty.\n";
-	}
+	cout << "\nLinked list content after revers: \n";
 
-	cout << "\nafter clear: \n";
-	MyDbblLinkedList.Clear();
-	cout<< MyDbblLinkedList.Size();
+	MyDbblLinkedList.PrintList();
 }
