@@ -6,26 +6,26 @@ template <class T>
 class clsDblLinkedList
 {
 public:
-	struct Node
+	class Node
 	{
+	public:
+
 		T value;
 		Node* next;
 		Node* prev;
 	};
 
-private:
+
 	Node * _head=NULL;
 
-public:
 
 	void PrintList()
 	{
 		Node* current = _head;
-		cout << "NULL <-->";
 
 		while (current != NULL)
 		{
-			cout << current->value << " <--> ";
+			cout << current->value << "  ";
 			current = current->next;
 		}
 
@@ -34,15 +34,15 @@ public:
 
 	void InsertAtBeginning(T Value)
 	{
-		Node* N1 = new Node();
-		N1->value = Value;
-		N1->next = _head;
-		N1->prev = NULL;
+		Node* newNode = new Node();
+		newNode->value = Value;
+		newNode->next = _head;
+		newNode->prev = NULL;
 
 		if (_head != NULL)
-			_head->prev = N1;
+			_head->prev = newNode;
 
-		_head = N1;
+		_head = newNode;
 	}
 
 	Node* Find(T Value)
@@ -129,6 +129,49 @@ public:
 
 	}
 
+	void DeleteFirstNode()
+	{
+		if (_head == NULL)
+			return;
 
+		Node* temp = _head;
+
+		_head = _head->next;
+		
+		if (_head != NULL)
+		{
+			_head->prev = NULL;
+		}
+
+		delete temp;
+	}
+
+	void DeleteLastNode()
+	{
+		if (_head == NULL)
+			return;
+
+		Node* current
+			= _head;
+
+		if (_head->next == NULL)
+		{
+			_head = NULL;
+
+			delete current;
+			return;
+		}
+
+		while (current->next->next != NULL)
+		{
+			current = current->next;
+		}
+
+		Node* NodeToDelete = current->next;
+		current->next = NULL;
+
+		delete NodeToDelete;
+
+	}
 };
 

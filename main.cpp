@@ -15,10 +15,11 @@ int main()
 
 	MyDbblLinkedList.PrintList();
 
-	clsDblLinkedList<int>::Node* N1= MyDbblLinkedList.Find(1	);
+	int value = 1;
+	clsDblLinkedList<int>::Node* N1= MyDbblLinkedList.Find(value);
 
 	if (N1 != NULL)
-		cout << "\n\nNode whith value 2 found  :-)\n";
+		cout << "\n\nNode whith value " << value << "  found  :-)\n";
 	else
 		cout << "\n\nNode whith is not found :-(\n";
 
@@ -26,8 +27,13 @@ int main()
 	MyDbblLinkedList.PrintList();
 	
 
-	cout << "\n\nafter delete to end : \n";
-	MyDbblLinkedList.DeleteNode(N1);
+	cout << "\n\nafter delete  first : \n";
+	MyDbblLinkedList.DeleteFirstNode();
+
+	MyDbblLinkedList.PrintList();
+
+	cout << "\n\nafter delete  last : \n";
+	MyDbblLinkedList.DeleteLastNode();
 
 	MyDbblLinkedList.PrintList();
 
