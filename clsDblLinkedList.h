@@ -223,5 +223,28 @@ public:
 		}
 	}
 
+	Node* GetNod(int Index)
+	{
+		if ((Index > _size - 1) || (Index < 0)) //out of range
+			return NULL;
+
+		int Counter = 0;
+
+		Node* Current = _head;
+
+		while (Current != NULL && (Current->next != NULL))
+		{
+			if (Index == Counter)
+				break;
+
+			Current = Current->next;
+			Counter++;
+		}
+
+		return Current;
+
+		
+	}
+
 };
 
