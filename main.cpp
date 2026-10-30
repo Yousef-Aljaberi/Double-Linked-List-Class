@@ -16,15 +16,10 @@ int main()
 	cout << "\nLinked List Content: \n";
 	MyDbblLinkedList.PrintList();
 
-	//cout << "\nLinked list content after revers: \n";
+	MyDbblLinkedList.InsertAfter(1, 500);
 
-	clsDblLinkedList<int>::Node* N;
-
-	N = MyDbblLinkedList.GetNod(4);
-
-	if (N != NULL)
-	{
-		cout << "\nNode value is: " << N->value;
-	}
+	cout << "\nAfter Insert: \n";
+	MyDbblLinkedList.PrintList();
 	
+
 }

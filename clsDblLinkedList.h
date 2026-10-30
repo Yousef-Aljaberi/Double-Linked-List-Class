@@ -20,7 +20,7 @@ public:
 	};
 
 
-	Node * _head=NULL;
+	Node* _head = NULL;
 
 
 	void PrintList()
@@ -64,15 +64,17 @@ public:
 		_size++;
 	}
 
-	void InsertAfter(Node* current,T Value )
+	//---------------------------------------------------------------------
+
+	void InsertAfter(Node* current, T Value)
 	{
-		
+
 		Node* N1 = new Node();
 
 		N1->value = Value;
 		N1->next = current->next;
 		N1->prev = current;
-		
+
 		if (current->next != NULL)
 		{
 			current->next->prev = N1;
@@ -81,7 +83,23 @@ public:
 		current->next = N1;
 		_size++;
 	}
-	
+
+	bool InsertAfter(int Index, T Value)
+	{
+		Node* ItemNode = GetNod(Index);
+		
+		if (ItemNode != NULL)
+		{
+			InsertAfter(ItemNode, Value);
+			return true;
+		}
+		else
+			return false;
+		
+	}
+
+	//----------------------------------------------------------------------
+
 	void InsertAtEnd(T Value)
 	{
 		Node* N1 = new Node();
@@ -93,7 +111,7 @@ public:
 		{
 			_head = N1;
 			N1->prev = NULL;
-			
+
 		}
 		else
 		{
@@ -110,7 +128,7 @@ public:
 		_size++;
 	}
 
-	void DeleteNode(Node* &NodeToDelete)
+	void DeleteNode(Node*& NodeToDelete)
 	{
 		if (NodeToDelete == NULL || _head == NULL)
 			return;
@@ -142,7 +160,7 @@ public:
 		Node* temp = _head;
 
 		_head = _head->next;
-		
+
 		if (_head != NULL)
 		{
 			_head->prev = NULL;
@@ -201,16 +219,16 @@ public:
 
 	void Revers()
 	{
-		if(_size==0)
+		if (_size == 0)
 		{
 			return;
 		}
 		Node* current = _head;
 
 		Node* temp = nullptr;
-		while ( current != NULL)
+		while (current != NULL)
 		{
-			temp= current->prev;
+			temp = current->prev;
 			current->prev = current->next;
 			current->next = temp;
 			current = current->prev;
@@ -225,7 +243,7 @@ public:
 
 	Node* GetNod(int Index)
 	{
-		if ((Index > _size - 1) || (Index < 0)) //out of range
+		if ((Index > _size - 1) || (Index < 0))
 			return NULL;
 
 		int Counter = 0;
@@ -243,8 +261,34 @@ public:
 
 		return Current;
 
-		
+
 	}
+
+	T GetItem(int Index)
+	{
+		Node* ItemNode = GetNod(Index);
+
+		if (ItemNode == NULL)
+			return NULL;
+		else
+			return ItemNode->value;
+	}
+
+	bool UpdateItem(int Index, T NewValue)
+	{
+		Node* ItemNode = GetNod(Index);
+
+		if (ItemNode != NULL)
+		{
+			ItemNode->value = NewValue;
+			return true;
+		}
+
+		else
+			return false;
+	}
+
+
 
 };
 
